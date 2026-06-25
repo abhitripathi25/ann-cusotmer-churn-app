@@ -1,9 +1,10 @@
 import streamlit as st
 from sklearn.preprocessing import StandardScaler,LabelEncoder,OneHotEncoder
-
+import tensorflow as tf
 import numpy as np
 import pickle
 import pandas as pd
+from tensorflow.keras.models import load_model
 
 
 
@@ -90,9 +91,10 @@ input_data_scaled=scaler_load.transform(input_data)
 # predict the churn
 
 
-import numpy as np
 
-prediction_prob = np.random.rand()
+prediction = model.predict(input_data_scaled)
+prediction_prob = prediction[0][0]
+
 
 
 # ✅ probability print karo
